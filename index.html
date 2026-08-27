@@ -26,6 +26,91 @@
       margin: 0 auto;
     }
 
+    /* ---- NAVIGATION ---- */
+    .main-nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      background: white;
+      padding: 0.8rem 2rem;
+      border-radius: 60px;
+      box-shadow: 0 4px 12px rgba(0, 20, 30, 0.04);
+      margin-bottom: 2.2rem;
+      border: 1px solid #e4ebf3;
+    }
+
+    .nav-brand {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #0b2b4a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-brand i {
+      color: #1d6f9c;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.5rem 1.8rem;
+      flex-wrap: wrap;
+      align-items: center;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #2a4058;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 0.3rem 0.2rem;
+      border-bottom: 2px solid transparent;
+      transition: 0.15s ease;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: #1d6f9c;
+      color: #0b2b4a;
+    }
+
+    .nav-links a.active {
+      border-bottom-color: #1d6f9c;
+      color: #0b2b4a;
+    }
+
+    .nav-links .btn-outline {
+      background: #e4eff9;
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      border-bottom: none;
+      font-weight: 600;
+      color: #004c7a;
+    }
+
+    .nav-links .btn-outline:hover {
+      background: #c8dcee;
+      border-bottom: none;
+    }
+
+    @media (max-width: 700px) {
+      .main-nav {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.8rem;
+        padding: 1rem 1.5rem;
+        border-radius: 28px;
+      }
+      .nav-links {
+        justify-content: center;
+        gap: 0.3rem 1.2rem;
+      }
+    }
+
     /* header / hero */
     .hero {
       background: linear-gradient(145deg, #0b2b4a, #133e5e);
@@ -445,10 +530,16 @@
       align-items: center;
       gap: 10px;
       box-shadow: 0 6px 14px rgba(29, 111, 156, 0.3);
-      cursor: default;
       transition: 0.1s ease;
       font-size: 1rem;
       white-space: nowrap;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .guardian-promo .btn-guardian:hover {
+      background: #0f5a80;
+      box-shadow: 0 8px 18px rgba(29, 111, 156, 0.4);
     }
 
     .guardian-promo .btn-guardian i {
@@ -503,12 +594,43 @@
         align-self: flex-start;
       }
     }
+
+    /* legal footer links */
+    .legal-links {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem 2rem;
+      font-size: 0.9rem;
+    }
+    .legal-links a {
+      color: #1d6f9c;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .legal-links a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
 <div class="container">
 
-  <!-- Hero: brand & free tag -->
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="main-nav">
+    <div class="nav-brand">
+      <i class="fas fa-database"></i> Data Check
+    </div>
+    <ul class="nav-links">
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="terms.html">Terms</a></li>
+      <li><a href="https://marketplace.zoho.com" target="_blank" class="btn-outline"><i class="fas fa-external-link-alt"></i> Marketplace</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== HERO ===== -->
   <div class="hero">
     <div class="hero-badge">
       <i class="fas fa-shield-alt" style="margin-right: 6px;"></i> Zoho CRM · Data Quality
@@ -525,7 +647,7 @@
     </div>
   </div>
 
-  <!-- Guidance: Key Features (user guidance cards) -->
+  <!-- ===== FEATURES ===== -->
   <div class="guidance-section">
     <div class="section-title">
       <i class="fas fa-compass" style="color: #1d6f9c; font-size: 1.8rem;"></i> How to use Data Check
@@ -536,7 +658,6 @@
     </div>
 
     <div class="card-grid">
-      <!-- 1. Duplicate -->
       <div class="card">
         <div class="card-icon"><i class="fas fa-copy"></i></div>
         <h3>Duplicate Records <i class="fas fa-circle-exclamation" style="font-size: 0.8rem; color: #b34a3b;"></i></h3>
@@ -544,7 +665,6 @@
         <span class="feature-tip"><i class="fas fa-lightbulb"></i> Scan & compare</span>
       </div>
 
-      <!-- 2. Missing data -->
       <div class="card">
         <div class="card-icon"><i class="fas fa-triangle-exclamation"></i></div>
         <h3>Missing Data <i class="fas fa-ellipsis-h" style="font-size: 0.8rem;"></i></h3>
@@ -552,7 +672,6 @@
         <span class="feature-tip"><i class="fas fa-flag"></i> Incomplete fields</span>
       </div>
 
-      <!-- 3. Email check -->
       <div class="card">
         <div class="card-icon"><i class="fas fa-envelope"></i></div>
         <h3>Email Data Check</h3>
@@ -560,7 +679,6 @@
         <span class="feature-tip"><i class="fas fa-at"></i> Validate format</span>
       </div>
 
-      <!-- 4. Phone check -->
       <div class="card">
         <div class="card-icon"><i class="fas fa-phone"></i></div>
         <h3>Phone Data Check</h3>
@@ -568,7 +686,6 @@
         <span class="feature-tip"><i class="fas fa-phone-volume"></i> Missing numbers</span>
       </div>
 
-      <!-- 5. Address check -->
       <div class="card">
         <div class="card-icon"><i class="fas fa-location-dot"></i></div>
         <h3>Address Data Check</h3>
@@ -576,7 +693,6 @@
         <span class="feature-tip"><i class="fas fa-map-pin"></i> Incomplete address</span>
       </div>
 
-      <!-- 6. Health overview -->
       <div class="card">
         <div class="card-icon"><i class="fas fa-chart-pie"></i></div>
         <h3>CRM Data Health <i class="fas fa-heart" style="color: #c44536; font-size: 0.9rem;"></i></h3>
@@ -585,7 +701,6 @@
       </div>
     </div>
 
-    <!-- extra card: easy results -->
     <div style="margin-top: 1.8rem; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: flex-start;">
       <div style="background: #ebf3fb; border-radius: 60px; padding: 0.5rem 1.5rem; display: inline-flex; align-items: center; gap: 8px; border: 1px solid #c3d9ef;">
         <i class="fas fa-list-check" style="color: #004c7a;"></i> <span style="font-weight: 500;">Easy-to-understand results</span>
@@ -596,7 +711,7 @@
     </div>
   </div>
 
-  <!--  FIX SOLUTION: Data Guardian Promo  -->
+  <!-- ===== DATA GUARDIAN PROMO ===== -->
   <div class="guardian-promo">
     <div class="icon-big">
       <i class="fas fa-robot"></i>
@@ -609,12 +724,12 @@
       <p><i class="fas fa-check-circle" style="color: #2e9b5e;"></i> <strong>Health scoring</strong> · Email, phone, address, name validation · <strong>Automated tasks</strong> based on health score · Weekly & monthly reports</p>
       <p style="font-size: 0.9rem; margin-top: 4px; opacity: 0.85;">Used by teams to maintain cleaner, more consistent records — <strong>10-day free trial</strong> available.</p>
     </div>
-    <div class="btn-guardian">
-      <a href="https://marketplace.zoho.com/app/crm/data-guardian-for-zoho-crm" target="_new"></a><i class="fas fa-arrow-up-right-from-square"></i> Get Data Guardian </a>
-    </div>
+    <a href="https://marketplace.zoho.com/app/crm/data-guardian-for-zoho-crm" target="_blank" class="btn-guardian">
+      <i class="fas fa-arrow-up-right-from-square"></i> Get Data Guardian
+    </a>
   </div>
 
-  <!--  How to fix: step by step guidance -->
+  <!-- ===== FIX STEPS ===== -->
   <div class="fix-steps">
     <h4><i class="fas fa-wrench" style="color: #1d6f9c;"></i> How to fix the issues found by Data Check</h4>
     <ul>
@@ -626,7 +741,7 @@
     </ul>
   </div>
 
-  <!-- Why use Data Check? (user guidance) -->
+  <!-- ===== WHY USE ===== -->
   <div class="why-box">
     <div class="why-icon">
       <i class="fas fa-circle-question"></i>
@@ -643,7 +758,7 @@
     </div>
   </div>
 
-  <!-- User guidance callout: how to start -->
+  <!-- ===== CTA ===== -->
   <div class="cta-guide">
     <div class="guide-text">
       <i class="fas fa-arrow-pointer"></i>
@@ -657,7 +772,7 @@
     </div>
   </div>
 
-  <!-- footer notes with guidance hints -->
+  <!-- ===== FOOTER ===== -->
   <div class="footer-note">
     <span><i class="fas fa-check-circle" style="color: #2e9b5e;"></i> Free forever</span>
     <span><i class="fas fa-user-check"></i> No credit card required</span>
@@ -665,15 +780,16 @@
     <span><i class="fas fa-rotate"></i> Updated regularly</span>
   </div>
 
-  <!-- small extra guidance: "what to do next" -->
+  <!-- legal links -->
+  <div class="legal-links">
+    <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy Policy</a>
+    <a href="terms.html"><i class="fas fa-file-contract"></i> Terms of Service</a>
+    <a href="mailto:polas.habib@zohomail.com"><i class="fas fa-envelope"></i> Contact</a>
+  </div>
+
   <div style="margin-top: 1.2rem; background: #ffffffd8; border-radius: 60px; padding: 0.8rem 1.5rem; border: 1px solid #d6e2f0; display: inline-block; backdrop-filter: blur(2px);">
     <i class="fas fa-arrow-right" style="color: #004c7a; margin-right: 8px;"></i>
     <span style="font-weight: 450;">After scan: review the health overview, then fix duplicates, fill missing fields, and validate contacts.</span>
-  </div>
-  <div style="margin-top: 0.8rem; color: #2d4b68; font-size: 0.9rem; display: flex; gap: 20px; flex-wrap: wrap;">
-    <span><i class="fas-regular fa-circle-check" style="color: #1d6f9c;"></i> Duplicate merge guide</span>
-    <span><i class="fas-regular fa-circle-check" style="color: #1d6f9c;"></i> Data enrichment tips</span>
-    <span><i class="fas-regular fa-circle-check" style="color: #1d6f9c;"></i> Email & phone validation</span>
   </div>
 
 </div>
