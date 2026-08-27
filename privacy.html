@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy · Data Check for Zoho CRM</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
       margin: 0;
@@ -22,6 +24,95 @@
     .container {
       max-width: 1000px;
       margin: 0 auto;
+    }
+
+    /* ---- NAVIGATION ---- */
+    .main-nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      background: white;
+      padding: 0.8rem 2rem;
+      border-radius: 60px;
+      box-shadow: 0 4px 12px rgba(0, 20, 30, 0.04);
+      margin-bottom: 2.2rem;
+      border: 1px solid #e4ebf3;
+    }
+
+    .nav-brand {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #0b2b4a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-brand i {
+      color: #1d6f9c;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.5rem 1.8rem;
+      flex-wrap: wrap;
+      align-items: center;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #2a4058;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 0.3rem 0.2rem;
+      border-bottom: 2px solid transparent;
+      transition: 0.15s ease;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: #1d6f9c;
+      color: #0b2b4a;
+    }
+
+    .nav-links a.active {
+      border-bottom-color: #1d6f9c;
+      color: #0b2b4a;
+    }
+
+    .nav-links .btn-outline {
+      background: #e4eff9;
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      border-bottom: none;
+      font-weight: 600;
+      color: #004c7a;
+    }
+
+    .nav-links .btn-outline:hover {
+      background: #c8dcee;
+      border-bottom: none;
+    }
+
+    @media (max-width: 700px) {
+      .main-nav {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.8rem;
+        padding: 1rem 1.5rem;
+        border-radius: 28px;
+      }
+      .nav-links {
+        justify-content: center;
+        gap: 0.3rem 1.2rem;
+      }
+    }
+
+    /* ---- PRIVACY CONTENT ---- */
+    .privacy-content {
       background: white;
       border-radius: 32px;
       padding: 2.5rem 2.8rem;
@@ -178,8 +269,25 @@
       padding-top: 1.8rem;
     }
 
+    .legal-links {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem 2rem;
+      font-size: 0.9rem;
+    }
+    .legal-links a {
+      color: #1d6f9c;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .legal-links a:hover {
+      text-decoration: underline;
+    }
+
     @media (max-width: 650px) {
-      .container {
+      .privacy-content {
         padding: 1.8rem 1.2rem;
       }
       h1 {
@@ -198,94 +306,116 @@
       }
     }
   </style>
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 <div class="container">
-  <h1>
-    <i class="fas fa-shield-alt" style="color: #1d6f9c;"></i> Privacy Policy
-  </h1>
-  <div class="subhead">
-    Data Check for Zoho CRM · Your data security matters
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="main-nav">
+    <div class="nav-brand">
+      <i class="fas fa-database"></i> Data Check
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="privacy.html" class="active">Privacy</a></li>
+      <li><a href="terms.html">Terms</a></li>
+      <li><a href="https://marketplace.zoho.com" target="_blank" class="btn-outline"><i class="fas fa-external-link-alt"></i> Marketplace</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== PRIVACY CONTENT ===== -->
+  <div class="privacy-content">
+    <h1>
+      <i class="fas fa-shield-alt" style="color: #1d6f9c;"></i> Privacy Policy
+    </h1>
+    <div class="subhead">
+      Data Check for Zoho CRM · Your data security matters
+    </div>
+
+    <!-- 1. Introduction -->
+    <h2>1. Introduction</h2>
+    <p>This Privacy Policy describes how <strong>Data Check</strong> collects, uses, and protects data when you use our free Zoho CRM extension. We are committed to transparency and safeguarding your information.</p>
+
+    <!-- 2. Data We Access -->
+    <h2>2. Data We Access</h2>
+    <p>Data Check scans your CRM records to identify quality issues. The following data categories are accessed solely for this purpose:</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Data Category</th>
+          <th>Purpose</th>
+          <th>Modules</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Record Fields</strong></td>
+          <td>Check for missing or incomplete data</td>
+          <td>Leads, Contacts, Accounts</td>
+        </tr>
+        <tr>
+          <td><strong>Email Addresses</strong></td>
+          <td>Identify missing or malformed emails</td>
+          <td>Leads, Contacts</td>
+        </tr>
+        <tr>
+          <td><strong>Phone Numbers</strong></td>
+          <td>Detect missing phone numbers</td>
+          <td>Leads, Contacts, Accounts</td>
+        </tr>
+        <tr>
+          <td><strong>Address Fields</strong></td>
+          <td>Find incomplete address information</td>
+          <td>Leads, Contacts, Accounts</td>
+        </tr>
+        <tr>
+          <td><strong>Account Details</strong></td>
+          <td>Check for missing account data</td>
+          <td>Accounts</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 3. What We DON'T Access -->
+    <h2>3. What We <span style="color: #b34a3b;">DON'T</span> Access</h2>
+    <ul class="badge-list">
+      <li><i class="fas fa-times-circle" style="color: #b34a3b;"></i> Passwords</li>
+      <li><i class="fas fa-times-circle" style="color: #b34a3b;"></i> Financial data</li>
+      <li><i class="fas fa-times-circle" style="color: #b34a3b;"></i> Payment cards</li>
+      <li><i class="fas fa-times-circle" style="color: #b34a3b;"></i> Government IDs</li>
+      <li><i class="fas fa-times-circle" style="color: #b34a3b;"></i> Health data</li>
+    </ul>
+
+    <!-- 4. Third-Party Services -->
+    <h2>4. Third-Party Services</h2>
+    <p>Data Check is a <strong>free, standalone scanner</strong> and does not integrate with any third-party services for data processing. All scanning and analysis are performed locally within your Zoho CRM environment.</p>
+    <div style="background: #e9f2fa; padding: 0.8rem 1.5rem; border-radius: 40px; display: inline-block; margin: 0.5rem 0 1rem;">
+      <i class="fas fa-check-circle" style="color: #2e9b5e;"></i> No external APIs · No data sharing
+    </div>
+
+    <!-- 5. Data Storage -->
+    <h2>5. Data Storage</h2>
+    <p><i class="fas fa-database" style="color: #1d6f9c; margin-right: 8px;"></i> All data is stored <strong>within your Zoho CRM</strong>. Data Check does not maintain any external databases. You can delete data anytime by clearing fields or uninstalling the extension.</p>
+
+    <!-- 6. Contact -->
+    <h2>6. Contact</h2>
+    <div class="contact-block">
+      <div><i class="fas fa-envelope" style="color: #1d6f9c; width: 24px;"></i> <a href="mailto:polas.habib@zohomail.com">polas.habib@zohomail.com</a></div>
+      <div><i class="fas fa-globe" style="color: #1d6f9c; width: 24px;"></i> <a href="#">Contact Form (via Zoho Marketplace)</a></div>
+    </div>
+
+    <!-- footer -->
+    <div class="footer-note">
+      <i class="fas fa-lock" style="margin-right: 6px;"></i> Data Check for Zoho CRM · Privacy Policy · Updated August 2026
+    </div>
   </div>
 
-  <!-- 1. Introduction -->
-  <h2>1. Introduction</h2>
-  <p>This Privacy Policy describes how <strong>Data Check</strong> collects, uses, and protects data when you use our free Zoho CRM extension. We are committed to transparency and safeguarding your information.</p>
-
-  <!-- 2. Data We Access -->
-  <h2>2. Data We Access</h2>
-  <p>Data Check scans your CRM records to identify quality issues. The following data categories are accessed solely for this purpose:</p>
-
-  <table class="data-table">
-    <thead>
-      <tr>
-        <th>Data Category</th>
-        <th>Purpose</th>
-        <th>Modules</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Record Fields</strong></td>
-        <td>Check for missing or incomplete data</td>
-        <td>Leads, Contacts, Accounts</td>
-      </tr>
-      <tr>
-        <td><strong>Email Addresses</strong></td>
-        <td>Identify missing or malformed emails</td>
-        <td>Leads, Contacts</td>
-      </tr>
-      <tr>
-        <td><strong>Phone Numbers</strong></td>
-        <td>Detect missing phone numbers</td>
-        <td>Leads, Contacts, Accounts</td>
-      </tr>
-      <tr>
-        <td><strong>Address Fields</strong></td>
-        <td>Find incomplete address information</td>
-        <td>Leads, Contacts, Accounts</td>
-      </tr>
-      <tr>
-        <td><strong>Account Details</strong></td>
-        <td>Check for missing account data</td>
-        <td>Accounts</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <!-- 3. What We DON'T Access -->
-  <h2>3. What We <span style="color: #b34a3b;">DON'T</span> Access</h2>
-  <ul class="badge-list">
-    <li><i class="fas fa-times-circle" style="color: #b34a3b;"></i> Passwords</li>
-    <li><i class="fas fa-times-circle" style="color: #b34a3b;"></i> Financial data</li>
-    <li><i class="fas fa-times-circle" style="color: #b34a3b;"></i> Payment cards</li>
-    <li><i class="fas fa-times-circle" style="color: #b34a3b;"></i> Government IDs</li>
-    <li><i class="fas fa-times-circle" style="color: #b34a3b;"></i> Health data</li>
-  </ul>
-
-  <!-- 4. Third-Party Services -->
-  <h2>4. Third-Party Services</h2>
-  <p>Data Check is a <strong>free, standalone scanner</strong> and does not integrate with any third-party services for data processing. All scanning and analysis are performed locally within your Zoho CRM environment.</p>
-  <div style="background: #e9f2fa; padding: 0.8rem 1.5rem; border-radius: 40px; display: inline-block; margin: 0.5rem 0 1rem;">
-    <i class="fas fa-check-circle" style="color: #2e9b5e;"></i> No external APIs · No data sharing
-  </div>
-
-  <!-- 5. Data Storage -->
-  <h2>5. Data Storage</h2>
-  <p><i class="fas fa-database" style="color: #1d6f9c; margin-right: 8px;"></i> All data is stored <strong>within your Zoho CRM</strong>. Data Check does not maintain any external databases. You can delete data anytime by clearing fields or uninstalling the extension.</p>
-
-  <!-- 6. Contact -->
-  <h2>6. Contact</h2>
-  <div class="contact-block">
-    <div><i class="fas fa-envelope" style="color: #1d6f9c; width: 24px;"></i> <a href="mailto:polas.habib@zohomail.com">polas.habib@zohomail.com</a></div>
-    <div><i class="fas fa-globe" style="color: #1d6f9c; width: 24px;"></i> <a href="#">Contact Form (via Zoho Marketplace)</a></div>
-  </div>
-
-  <!-- footer -->
-  <div class="footer-note">
-    <i class="fas fa-lock" style="margin-right: 6px;"></i> Data Check for Zoho CRM · Privacy Policy · Updated August 2026
+  <!-- ===== LEGAL LINKS ===== -->
+  <div class="legal-links">
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="terms.html"><i class="fas fa-file-contract"></i> Terms of Service</a>
+    <a href="mailto:polas.habib@zohomail.com"><i class="fas fa-envelope"></i> Contact</a>
   </div>
 
 </div>
