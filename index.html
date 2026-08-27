@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Check + Data Guardian · Zoho CRM</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f4f7fc;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1a2639;
+      line-height: 1.5;
+      padding: 2rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* header / hero */
+    .hero {
+      background: linear-gradient(145deg, #0b2b4a, #133e5e);
+      color: white;
+      padding: 2.5rem 2.5rem 2rem 2.5rem;
+      border-radius: 32px;
+      box-shadow: 0 12px 30px rgba(0, 20, 40, 0.25);
+      margin-bottom: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "⚡";
+      font-size: 8rem;
+      opacity: 0.08;
+      position: absolute;
+      right: -10px;
+      bottom: -30px;
+      transform: rotate(10deg);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(4px);
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      color: #d4e6ff;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+
+    .hero h1 i {
+      color: #7bc9ff;
+      margin-right: 8px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      max-width: 700px;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero .free-tag {
+      display: inline-block;
+      background: #2e9b5e;
+      padding: 0.4rem 1.4rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.3px;
+      box-shadow: 0 4px 12px rgba(46, 155, 94, 0.3);
+    }
+
+    .hero .free-tag i {
+      margin-right: 6px;
+    }
+
+    /* guidance cards – feature grid */
+    .guidance-section {
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      font-size: 1.9rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-sub {
+      color: #3e4e62;
+      margin-bottom: 2rem;
+      font-size: 1.05rem;
+      border-left: 4px solid #1d6f9c;
+      padding-left: 1rem;
+      background: #e9f0fa;
+      border-radius: 0 12px 12px 0;
+      padding: 0.6rem 1.2rem;
+      display: inline-block;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 24px;
+      padding: 1.8rem 1.5rem 1.8rem 1.5rem;
+      box-shadow: 0 6px 18px rgba(0, 20, 30, 0.06);
+      transition: transform 0.15s ease, box-shadow 0.2s;
+      border: 1px solid #e9eef4;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(18, 52, 77, 0.10);
+      border-color: #c8dcee;
+    }
+
+    .card-icon {
+      font-size: 2.2rem;
+      color: #1d6f9c;
+      background: #e4eff9;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 18px;
+      margin-bottom: 1.2rem;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .card h3 i {
+      color: #1d6f9c;
+      font-size: 1rem;
+      opacity: 0.7;
+    }
+
+    .card p {
+      color: #2f4057;
+      margin-bottom: 1rem;
+      flex: 1;
+    }
+
+    .card .feature-tip {
+      background: #f0f6fe;
+      border-radius: 40px;
+      padding: 0.3rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #005a8c;
+      align-self: flex-start;
+      border: 1px solid #d4e3f5;
+      margin-top: 6px;
+    }
+
+    .card .feature-tip i {
+      margin-right: 4px;
+    }
+
+    /* why use section – extra guidance */
+    .why-box {
+      background: white;
+      border-radius: 28px;
+      padding: 2rem 2.2rem;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.02);
+      border: 1px solid #e4ebf3;
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .why-icon {
+      background: #dce8f5;
+      width: 70px;
+      height: 70px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
+      color: #004c7a;
+      flex-shrink: 0;
+    }
+
+    .why-content {
+      flex: 1;
+    }
+
+    .why-content h2 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .why-content p {
+      color: #2f4057;
+      max-width: 700px;
+    }
+
+    .why-bullets {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem 2rem;
+      margin-top: 0.8rem;
+      list-style: none;
+    }
+
+    .why-bullets li {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 450;
+    }
+
+    .why-bullets li i {
+      color: #c44536;
+      width: 18px;
+      font-size: 0.9rem;
+    }
+
+    /* call to action / user guidance */
+    .cta-guide {
+      background: #e2edfa;
+      border-radius: 30px;
+      padding: 1.8rem 2.2rem;
+      margin: 2.8rem 0 1.5rem;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      border: 1px solid #c7daf0;
+    }
+
+    .cta-guide .guide-text {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .cta-guide .guide-text i {
+      font-size: 2.2rem;
+      color: #004c7a;
+      background: white;
+      padding: 12px;
+      border-radius: 40px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+    }
+
+    .cta-guide .guide-text span {
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    .cta-guide .guide-text small {
+      display: block;
+      font-weight: 400;
+      color: #1f405b;
+      font-size: 0.95rem;
+    }
+
+    .cta-guide .btn {
+      background: #0b2b4a;
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: default;
+      box-shadow: 0 6px 14px rgba(11, 43, 74, 0.25);
+      transition: 0.1s ease;
+    }
+
+    .cta-guide .btn i {
+      font-size: 1rem;
+    }
+
+    .footer-note {
+      margin-top: 2.2rem;
+      text-align: center;
+      color: #4e637a;
+      border-top: 1px solid #d5e0ec;
+      padding-top: 2rem;
+      font-size: 0.95rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem 1.5rem;
+    }
+
+    .footer-note i {
+      color: #1d6f9c;
+      margin-right: 4px;
+    }
+
+    /* responsive touches */
+    @media (max-width: 650px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero {
+        padding: 1.8rem 1.5rem;
+      }
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+      .why-box {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .cta-guide {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.2rem;
+      }
+      .section-title {
+        font-size: 1.6rem;
+      }
+    }
+
+    /* small extra polish */
+    .badge-ghost {
+      background: #e7f0fa;
+      border-radius: 20px;
+      padding: 0.2rem 0.9rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #004072;
+    }
+
+    i.fa-solid, i.fa-regular, i.fa-duotone {
+      pointer-events: none;
+    }
+
+    /* Guardian promo box */
+    .guardian-promo {
+      background: linear-gradient(135deg, #ffffff 0%, #f2f8ff 100%);
+      border-radius: 28px;
+      padding: 1.8rem 2.2rem;
+      border: 1px solid #bfd7f0;
+      box-shadow: 0 8px 18px rgba(0, 40, 70, 0.04);
+      margin: 2rem 0 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.5rem 2rem;
+    }
+
+    .guardian-promo .icon-big {
+      background: #0b2b4a;
+      color: white;
+      width: 70px;
+      height: 70px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      flex-shrink: 0;
+    }
+
+    .guardian-promo .info {
+      flex: 2;
+      min-width: 200px;
+    }
+
+    .guardian-promo .info h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .guardian-promo .info h3 small {
+      font-size: 0.9rem;
+      font-weight: 500;
+      background: #e3effa;
+      padding: 0.2rem 0.9rem;
+      border-radius: 40px;
+      color: #004072;
+    }
+
+    .guardian-promo .info p {
+      color: #1e3b57;
+      margin: 6px 0 0;
+    }
+
+    .guardian-promo .btn-guardian {
+      background: #1d6f9c;
+      color: white;
+      padding: 0.8rem 2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 6px 14px rgba(29, 111, 156, 0.3);
+      cursor: default;
+      transition: 0.1s ease;
+      font-size: 1rem;
+      white-space: nowrap;
+    }
+
+    .guardian-promo .btn-guardian i {
+      font-size: 1.1rem;
+    }
+
+    .fix-steps {
+      background: #e9f2fa;
+      border-radius: 24px;
+      padding: 1.5rem 2rem;
+      margin: 1.2rem 0 2rem;
+      border-left: 6px solid #1d6f9c;
+    }
+
+    .fix-steps h4 {
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 0.75rem;
+    }
+
+    .fix-steps ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .fix-steps ul li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: white;
+      padding: 0.3rem 1.2rem 0.3rem 1rem;
+      border-radius: 60px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+      border: 1px solid #d6e3f2;
+    }
+
+    .fix-steps ul li i {
+      color: #1d6f9c;
+    }
+
+    @media (max-width: 550px) {
+      .guardian-promo {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .guardian-promo .btn-guardian {
+        align-self: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Hero: brand & free tag -->
+  <div class="hero">
+    <div class="hero-badge">
+      <i class="fas fa-shield-alt" style="margin-right: 6px;"></i> Zoho CRM · Data Quality
+    </div>
+    <h1>
+      <i class="fas fa-database"></i> Data Check for Zoho CRM
+    </h1>
+    <p>
+      Keep your Zoho CRM data clean, complete, and reliable — <strong>for free</strong>.
+      Scan thousands of records in seconds and spot issues before they impact your business.
+    </p>
+    <div class="free-tag">
+      <i class="fas fa-circle-check"></i> 100% free · no subscription
+    </div>
+  </div>
+
+  <!-- Guidance: Key Features (user guidance cards) -->
+  <div class="guidance-section">
+    <div class="section-title">
+      <i class="fas fa-compass" style="color: #1d6f9c; font-size: 1.8rem;"></i> How to use Data Check
+      <span style="font-size: 0.9rem; font-weight: 400; margin-left: 10px; color: #3f5a78;">— scan, review, act</span>
+    </div>
+    <div class="section-sub">
+      <i class="fas fa-arrow-right" style="margin-right: 8px;"></i> Each card below shows a key scanner & what it does for you
+    </div>
+
+    <div class="card-grid">
+      <!-- 1. Duplicate -->
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-copy"></i></div>
+        <h3>Duplicate Records <i class="fas fa-circle-exclamation" style="font-size: 0.8rem; color: #b34a3b;"></i></h3>
+        <p>Instantly find duplicate Leads, Contacts, and Accounts. Merge or remove them to keep your CRM clean and avoid confusion.</p>
+        <span class="feature-tip"><i class="fas fa-lightbulb"></i> Scan & compare</span>
+      </div>
+
+      <!-- 2. Missing data -->
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-triangle-exclamation"></i></div>
+        <h3>Missing Data <i class="fas fa-ellipsis-h" style="font-size: 0.8rem;"></i></h3>
+        <p>Detect records with missing or incomplete fields. Identify gaps in critical information so you can enrich them.</p>
+        <span class="feature-tip"><i class="fas fa-flag"></i> Incomplete fields</span>
+      </div>
+
+      <!-- 3. Email check -->
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-envelope"></i></div>
+        <h3>Email Data Check</h3>
+        <p>Reveal records where email is missing, malformed, or incomplete. Ensure your outreach reaches the right inbox.</p>
+        <span class="feature-tip"><i class="fas fa-at"></i> Validate format</span>
+      </div>
+
+      <!-- 4. Phone check -->
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-phone"></i></div>
+        <h3>Phone Data Check</h3>
+        <p>Find records with missing phone numbers. Keep your sales team equipped to call and follow up effectively.</p>
+        <span class="feature-tip"><i class="fas fa-phone-volume"></i> Missing numbers</span>
+      </div>
+
+      <!-- 5. Address check -->
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-location-dot"></i></div>
+        <h3>Address Data Check</h3>
+        <p>Spot incomplete address fields — missing city, postal code, or country. Improve targeting and shipping accuracy.</p>
+        <span class="feature-tip"><i class="fas fa-map-pin"></i> Incomplete address</span>
+      </div>
+
+      <!-- 6. Health overview -->
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-chart-pie"></i></div>
+        <h3>CRM Data Health <i class="fas fa-heart" style="color: #c44536; font-size: 0.9rem;"></i></h3>
+        <p>Get a simple, visual overview of your CRM data quality. Instantly see which areas need your attention.</p>
+        <span class="feature-tip"><i class="fas fa-gauge-high"></i> Overall score</span>
+      </div>
+    </div>
+
+    <!-- extra card: easy results -->
+    <div style="margin-top: 1.8rem; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: flex-start;">
+      <div style="background: #ebf3fb; border-radius: 60px; padding: 0.5rem 1.5rem; display: inline-flex; align-items: center; gap: 8px; border: 1px solid #c3d9ef;">
+        <i class="fas fa-list-check" style="color: #004c7a;"></i> <span style="font-weight: 500;">Easy-to-understand results</span>
+      </div>
+      <div style="background: #ebf3fb; border-radius: 60px; padding: 0.5rem 1.5rem; display: inline-flex; align-items: center; gap: 8px; border: 1px solid #c3d9ef;">
+        <i class="fas fa-arrow-trend-up" style="color: #004c7a;"></i> <span style="font-weight: 500;">Actionable insights</span>
+      </div>
+    </div>
+  </div>
+
+  <!--  FIX SOLUTION: Data Guardian Promo  -->
+  <div class="guardian-promo">
+    <div class="icon-big">
+      <i class="fas fa-robot"></i>
+    </div>
+    <div class="info">
+      <h3>
+        Fix issues automatically with Data Guardian
+        <small>Zoho Marketplace</small>
+      </h3>
+      <p><i class="fas fa-check-circle" style="color: #2e9b5e;"></i> <strong>Health scoring</strong> · Email, phone, address, name validation · <strong>Automated tasks</strong> based on health score · Weekly & monthly reports</p>
+      <p style="font-size: 0.9rem; margin-top: 4px; opacity: 0.85;">Used by teams to maintain cleaner, more consistent records — <strong>10-day free trial</strong> available.</p>
+    </div>
+    <div class="btn-guardian">
+      <i class="fas fa-arrow-up-right-from-square"></i> Get Data Guardian
+    </div>
+  </div>
+
+  <!--  How to fix: step by step guidance -->
+  <div class="fix-steps">
+    <h4><i class="fas fa-wrench" style="color: #1d6f9c;"></i> How to fix the issues found by Data Check</h4>
+    <ul>
+      <li><i class="fas fa-1"></i> Install <strong>Data Guardian</strong> from Zoho Marketplace</li>
+      <li><i class="fas fa-2"></i> Run automated validation & health scoring</li>
+      <li><i class="fas fa-3"></i> Review health reports & automated tasks</li>
+      <li><i class="fas fa-4"></i> Clean duplicates, fix missing data, validate contacts</li>
+      <li><i class="fas fa-5"></i> Monitor weekly/monthly reports for ongoing quality</li>
+    </ul>
+  </div>
+
+  <!-- Why use Data Check? (user guidance) -->
+  <div class="why-box">
+    <div class="why-icon">
+      <i class="fas fa-circle-question"></i>
+    </div>
+    <div class="why-content">
+      <h2>Why use Data Check?</h2>
+      <p>Poor-quality CRM data leads to failed communication, wasted sales effort, and inefficient campaigns. Data Check helps you discover problems <strong>before</strong> they hurt your business.</p>
+      <ul class="why-bullets">
+        <li><i class="fas fa-circle-check" style="color: #2e9b5e;"></i> Improve report accuracy</li>
+        <li><i class="fas fa-circle-check" style="color: #2e9b5e;"></i> Boost outreach success</li>
+        <li><i class="fas fa-circle-check" style="color: #2e9b5e;"></i> Save sales team time</li>
+        <li><i class="fas fa-circle-check" style="color: #2e9b5e;"></i> Maximise campaign ROI</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- User guidance callout: how to start -->
+  <div class="cta-guide">
+    <div class="guide-text">
+      <i class="fas fa-arrow-pointer"></i>
+      <div>
+        <span>Ready to scan your Zoho CRM?</span>
+        <small>Install Data Check from Zoho Marketplace (free) — then use Data Guardian to fix issues automatically.</small>
+      </div>
+    </div>
+    <div class="btn">
+      <i class="fas fa-rocket"></i> Start scanning
+    </div>
+  </div>
+
+  <!-- footer notes with guidance hints -->
+  <div class="footer-note">
+    <span><i class="fas fa-check-circle" style="color: #2e9b5e;"></i> Free forever</span>
+    <span><i class="fas fa-user-check"></i> No credit card required</span>
+    <span><i class="fas fa-cloud"></i> Works with Zoho CRM</span>
+    <span><i class="fas fa-rotate"></i> Updated regularly</span>
+  </div>
+
+  <!-- small extra guidance: "what to do next" -->
+  <div style="margin-top: 1.2rem; background: #ffffffd8; border-radius: 60px; padding: 0.8rem 1.5rem; border: 1px solid #d6e2f0; display: inline-block; backdrop-filter: blur(2px);">
+    <i class="fas fa-arrow-right" style="color: #004c7a; margin-right: 8px;"></i>
+    <span style="font-weight: 450;">After scan: review the health overview, then fix duplicates, fill missing fields, and validate contacts.</span>
+  </div>
+  <div style="margin-top: 0.8rem; color: #2d4b68; font-size: 0.9rem; display: flex; gap: 20px; flex-wrap: wrap;">
+    <span><i class="fas-regular fa-circle-check" style="color: #1d6f9c;"></i> Duplicate merge guide</span>
+    <span><i class="fas-regular fa-circle-check" style="color: #1d6f9c;"></i> Data enrichment tips</span>
+    <span><i class="fas-regular fa-circle-check" style="color: #1d6f9c;"></i> Email & phone validation</span>
+  </div>
+
+</div>
+<!-- end container -->
+</body>
+</html>
